@@ -9,4 +9,16 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+section {
+  padding-bottom: 100px;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
 img, svg { max-width: 100%; }

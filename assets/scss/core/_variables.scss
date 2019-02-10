@@ -1,6 +1,8 @@
 /* fonts */
 $font: 'Vollkorn', Helvetica, Arial, sans-serif;
-$text-font: 'Exo', Helvetica, Arial, sans-serif;
+$text-font: 'Exo Regular', Helvetica, Arial, sans-serif;
+$font-light: 'Exo Light', Helvetica, Arial, sans-serif;
+$font-bold: 'Exo Bold', Helvetica, Arial, sans-serif;
 
 $fontSizeSmall: 13px;
 $fontSize: 16px;
@@ -19,3 +21,23 @@ $tabletMin: 768px;
 $tabletMax: 767px;
 $mobileMin: 576px;
 $mobileMax: 575px;
+
+$box-shadow: 0 1px 4px 0 #04362315, 0 1px 2px 0 #04362315;
+
+%image-circle {
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+}
+
+%image-circle-big {
+    width: 260px;
+    height: 260px;
+    @extend %image-circle;
+}
+
+%image-circle-small {
+    width: 200px;
+    height: 200px;
+    @extend %image-circle;
+}

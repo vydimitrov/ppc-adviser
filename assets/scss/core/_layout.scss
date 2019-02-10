@@ -1,4 +1,33 @@
 .container {
     max-width: $widepMin;
     margin: 0 auto;
+    padding: 0 $gutter;
+}
+
+.container-narrow {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 $gutter;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -$gutter/2;
+    margin-left: -$gutter/2;
+}
+
+div[class^="col-"] {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: $gutter/2;
+    padding-left: $gutter/2;
+}
+
+@media screen and (min-width: $desktopMin) {
+    .col-sm-4 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
 }

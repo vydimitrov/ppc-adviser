@@ -1,0 +1,41 @@
+.services-in-details {
+    max-width: 1060px;
+    margin: 0 auto;
+    .service-details {
+        display: flex;
+        &.img-to-left {
+            .service-image-wrapper {
+                margin-right: 48px;
+            }
+        }
+
+        &.img-to-right {
+            .service-image-wrapper {
+                margin-left: 48px;
+            }
+        }
+
+        & + .service-details {
+            margin-top: 80px;
+        }
+    }
+
+    .service-image-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-image {
+        @extend %image-circle-big;
+    }
+    
+    .service-name {
+        margin: 0 0 16px;
+        white-space: nowrap;
+    }
+
+    .list-title {
+        margin-bottom: 8px;
+    }
+}

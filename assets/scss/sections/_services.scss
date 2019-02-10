@@ -1,0 +1,15 @@
+.services {
+    .service-inner {
+        padding: 0 $gutter;
+    }
+
+    .service-image-wrapper {
+        @extend %image-circle-small;
+        margin: 0 auto;
+    }
+
+    .service-description {
+        text-align: center;
+        padding: 0 16px;
+    }
+}
