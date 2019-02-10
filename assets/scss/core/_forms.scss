@@ -23,12 +23,18 @@ input[type="text"] {
         color: $tint-1;
     }
 
-    input:focus {
-        border-color: $main-color;
-        & + label {
+    input {
+        &:focus {
+            border-color: $main-color;
+            & + label {
+                color: $main-color;
+            }
+        }
+
+        &.input-field + label,
+        &:focus + label {
             font-size: 13px;
             transform: translateY(-22px);
-            color: $main-color;
             transition: all .2s;
         }
     }
