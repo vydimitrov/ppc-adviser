@@ -16,11 +16,17 @@
 
 .btn-primary {
     @extend %button-base;
-    background-color: $main-color;
     color: $black;
+    background-color: $main-color;
     border: 1px solid $main-color;
     &:hover {
         background-color: lighten($main-color, 8%);
+    }
+
+    &.disabled {
+        background-color: $tint-2;
+        border: 1px solid $tint-2;
+        cursor: not-allowed;
     }
 }
 

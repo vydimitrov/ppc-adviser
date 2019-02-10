@@ -1,10 +1,7 @@
 window.onload = function() {
     var inputs = document.querySelectorAll('.js-input');
 
-    var inputChange = function(e) {
-        console.log(e.value);
-    };
-
+    var valideInputs = 0;
     inputs.forEach(function(input) {
         input.oninput = function() {
             var isField = input.classList.value.indexOf('input-field') > -1;
