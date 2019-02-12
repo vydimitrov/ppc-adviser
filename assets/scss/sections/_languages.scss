@@ -1,0 +1,37 @@
+$icon-size: 52px;
+
+.languages {
+    .language-wrapper {
+        display: flex;
+        margin-bottom: 64px;
+    }
+
+    .flag {
+        flex: 0 0 $icon-size;
+        width: $icon-size;
+        height: $icon-size;
+        border-radius: $border-radius;
+        overflow: hidden;
+        box-shadow: $box-shadow;
+
+        img {
+            display: block;
+        }
+    }
+
+    .language-details {
+        padding-left: 16px;
+        flex: 1 1 auto;
+    }
+
+    .name {
+        text-align: left;
+        margin: 0 0 6px;
+        line-height: 1.12;
+        font-weight: bold;
+    }
+
+    .level {
+        font-style: italic;
+    }
+}
