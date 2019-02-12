@@ -49,6 +49,10 @@ $timeline-padding: 64px;
             border-radius: 50%;
             background: $main-color;
         }
+
+        &:last-child {
+            min-height: initial;
+        }
     }
 
     .timeline-left {
@@ -86,5 +90,11 @@ $timeline-padding: 64px;
     ul {
         list-style-type: none;
         padding: 0;
+
+        li {
+            a {
+                color: $main-color;
+            }
+        }
     }
 }
