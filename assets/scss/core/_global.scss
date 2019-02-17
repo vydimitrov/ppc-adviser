@@ -24,14 +24,14 @@ section {
 
   &.section-creamy {
     &::before {
-      background: $creamy;
+      background: $main-color-light;
     }
   }
 
   &.section-dark {
     color: $white;
     &::before {
-      background: #2d1313;
+      background: $main-color-dark;
     }
   }
 
@@ -60,4 +60,41 @@ img, svg { max-width: 100%; }
 
 .content-wrapper {
   overflow: hidden;
+}
+
+.sqaure-grid-item {
+  display: flex;
+  margin-bottom: 64px;
+}
+
+$icon-size: 58px;
+.sqaure-grid-item-icon {
+  flex: 0 0 $icon-size;
+  width: $icon-size;
+  height: $icon-size;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $box-shadow;
+  background: $white;
+
+  img {
+      display: block;
+  }
+}
+
+.sqaure-grid-details {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 16px;
+}
+
+.h4.sqaure-grid-name {
+  @extend %name;
+  font-weight: bold;
+}
+
+.sqaure-grid-additional-info {
+  @extend %name-addon;
 }

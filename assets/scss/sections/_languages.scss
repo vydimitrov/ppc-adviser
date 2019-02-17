@@ -1,47 +1,9 @@
 $icon-size: 52px;
 
 .languages {   
-    .container-narrow {
-        position: relative;
-        z-index: 1;
-        color: $white;
-    }
-
     .last {
-        .language-wrapper {
+        .sqaure-grid-item {
             margin-bottom: 12px;
         }
-    }
-
-    .language-wrapper {
-        display: flex;
-        margin-bottom: 64px;
-    }
-
-    .flag {
-        flex: 0 0 $icon-size;
-        width: $icon-size;
-        height: $icon-size;
-        border-radius: $border-radius;
-        overflow: hidden;
-        box-shadow: $box-shadow;
-
-        img {
-            display: block;
-        }
-    }
-
-    .language-details {
-        padding-left: 16px;
-        flex: 1 1 auto;
-    }
-
-    .name {
-       @extend %name;
-       font-weight: bold;
-    }
-
-    .level {
-        @extend %name-addon;
     }
 }
