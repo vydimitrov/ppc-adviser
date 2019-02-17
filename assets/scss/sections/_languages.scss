@@ -1,19 +1,6 @@
 $icon-size: 52px;
 
-.languages {
-    position: relative;
-    &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 200%;
-        height: 100%;
-        background: #2d1313;
-        transform: translate(-50%, -50%) rotate(-4deg);
-    }
-
+.languages {   
     .container-narrow {
         position: relative;
         z-index: 1;

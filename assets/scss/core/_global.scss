@@ -14,6 +14,7 @@ body {
 }
 
 section {
+  position: relative;
   padding: 80px 0;
 
   h2 {
@@ -22,10 +23,41 @@ section {
   }
 
   &.section-creamy {
-    background: $creamy;
-    border-top: 1px solid #f1f1f1;
-    border-bottom: 1px solid #f1f1f1;
+    &::before {
+      background: $creamy;
+    }
+  }
+
+  &.section-dark {
+    color: $white;
+    &::before {
+      background: #2d1313;
+    }
+  }
+
+  &.section-creamy,
+  &.section-dark {
+    .container,
+    .container-narrow {
+      position: relative;
+      z-index: 1;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 100%;
+      transform: translate(-50%, -50%) rotate(-4deg);
+    }
   }
 }
 
 img, svg { max-width: 100%; }
+
+.content-wrapper {
+  overflow: hidden;
+}
