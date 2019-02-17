@@ -1,6 +1,31 @@
 $icon-size: 52px;
 
 .languages {
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200%;
+        height: 100%;
+        background: #2d1313;
+        transform: translate(-50%, -50%) rotate(-4deg);
+    }
+
+    .container-narrow {
+        position: relative;
+        z-index: 1;
+        color: $white;
+    }
+
+    .last {
+        .language-wrapper {
+            margin-bottom: 12px;
+        }
+    }
+
     .language-wrapper {
         display: flex;
         margin-bottom: 64px;
@@ -25,13 +50,11 @@ $icon-size: 52px;
     }
 
     .name {
-        text-align: left;
-        margin: 0 0 6px;
-        line-height: 1.12;
-        font-weight: bold;
+       @extend %name;
+       font-weight: bold;
     }
 
     .level {
-        font-style: italic;
+        @extend %name-addon;
     }
 }

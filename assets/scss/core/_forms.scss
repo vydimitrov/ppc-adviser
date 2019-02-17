@@ -38,10 +38,15 @@ form {
         }
 
         input:checked + span::before {
-            content: "\2713";
-            padding-top: 2px;
-            font-size: 22px;
-            color: $main-color;
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: url(../../../assets/images/check.svg);
+            background-size: cover;
+            background-position: center;
         }
     }
 

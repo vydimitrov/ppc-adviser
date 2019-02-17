@@ -42,3 +42,15 @@ $border-radius: 4px;
     height: 200px;
     @extend %image-circle;
 }
+
+%name {
+    text-align: left;
+    margin: 0 0 4px;
+    line-height: 1.12;
+}
+
+%name-addon {
+    font-style: italic;
+    margin: 0;
+    line-height: 1.24;
+}
