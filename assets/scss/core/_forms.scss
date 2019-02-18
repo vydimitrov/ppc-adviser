@@ -81,6 +81,22 @@ form {
             padding: 0 8px;
             transition: all .2s;
             color: $tint-1;
+
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                top: 50%;
+                background: $white;
+            }
+
+            span {
+                position: relative;
+                z-index: 2;
+            }
         }
 
         textarea,
@@ -89,6 +105,17 @@ form {
                 border-color: $main-color;
                 & + label {
                     color: $main-color;
+                    background: $main-color-light;
+                    &::before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        top: 50%;
+                        background: $white;
+                    }
                 }
             }
 
@@ -97,6 +124,10 @@ form {
                 font-size: 13px;
                 transform: translateY(-22px);
                 transition: all .2s;
+            }
+
+            &.input-field + label {
+                background: $main-color-light;
             }
         }
     }

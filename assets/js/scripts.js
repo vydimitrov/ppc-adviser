@@ -58,18 +58,38 @@ function handleCarousel() {
     });
 }
 
-function handleScrollToForm() {
+function handleScrollTo() {
     var body = document.scrollingElement || document.documentElement;
-    var items = document.querySelectorAll('.js-scroll-to-form');
-    var form = document.querySelector('#contact-me');
-    var time = 1000;
+    var anchors = document.querySelectorAll('a');
 
-    items.forEach(function(item) {
-        item.addEventListener('click', function(e) {
+    anchors.forEach(function(anchor) {
+        var href = anchor.getAttribute('href');
+        var hashTagIndex = href.indexOf('#');
+        if (hashTagIndex === -1 || hashTagIndex !== 0) {
+            return;
+        }
+
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
+            var scrollToElement = document.querySelector(href);
+
+            if (!scrollToElement) {
+                return;
+            }
+            
             var from = body.scrollTop;
-            var offset = form.getBoundingClientRect().top;
+            var offset = scrollToElement.getBoundingClientRect().top;
             var start = new Date().getTime();
+
+            var time = 1000;
+            if (offset < 700) {
+                time = 300;
+            } else if (offset < 2000) {
+                time = 500;
+            } else if (offset < 4000) {
+                time = 700;
+            }
+
 
             window.requestAnimationFrame(scrollAnimation);
 
@@ -79,6 +99,20 @@ function handleScrollToForm() {
 
                 if (step !== 1) {
                     window.requestAnimationFrame(scrollAnimation);
+                } else {
+                    window.location.hash = href.substring(1);
+                    if (href.indexOf('contact-me') > -1) {
+                        setTimeout(function() {
+                            var firstInput = document.querySelector('form input');
+                            firstInput.focus();
+
+                            var isFreeAudit = anchor.getAttribute('data-free-audit');
+                            if (isFreeAudit === 'true') {
+                                var checkbox = document.querySelector('form .checkbox input');
+                                checkbox.checked = true;
+                            }
+                        }, 200);
+                    }
                 }
             }
 
@@ -90,5 +124,5 @@ function handleScrollToForm() {
 window.onload = function() {
     handleForm();
     handleCarousel();
-    handleScrollToForm();
+    handleScrollTo();
 };

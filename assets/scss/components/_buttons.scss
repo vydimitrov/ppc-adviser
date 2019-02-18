@@ -24,9 +24,15 @@
     }
 
     &.disabled {
-        background-color: $tint-2;
-        border: 1px solid $tint-2;
+        background-color: $tint-3;
+        border: 1px solid $tint-3;
+        color: $white;
         cursor: not-allowed;
+    }
+
+    &.main-cta {
+        padding: 12px 26px;
+        font-size: 15px;
     }
 }
 
