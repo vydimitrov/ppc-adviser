@@ -44,14 +44,23 @@ $img-size-big-tablet: 160px;
         width: $img-size-big-tablet;
         height: $img-size-big-tablet;
         flex: 0 0 $img-size-big-tablet;
-     }
+    }
 }
 
+$img-size-small-desktop: 200px;
+$img-size-small-tablet: 140px;
+
 %image-circle-small {
-    width: 200px;
-    height: 200px;
+    width: $img-size-small-desktop;
+    height: $img-size-small-desktop;
+    flex: 0 0 $img-size-small-desktop;
     @extend %image-circle;
-    flex: 0 0 200px;
+
+    @media screen and (max-width: $tabletMax) {
+        width: $img-size-small-tablet;
+        height: $img-size-small-tablet;
+        flex: 0 0 $img-size-small-tablet;
+    }
 }
 
 %name {
