@@ -1,4 +1,20 @@
 .contact-me {
+    @media screen and (max-width: $tabletMax) {
+        .form-col {
+            order: 1;
+        }
+
+        .desktop-titple {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: $tabletMin) {
+        .mobile-titple {
+            display: none;
+        }
+    }
+
     &::after {
         content: '';
         position: absolute;
@@ -10,7 +26,13 @@
     }
 
     .list-wrapper {
-        padding-left: 150px;
+        @media screen and (min-width: $tabletMin) {
+            padding-left: 150px;
+        }
+
+        @media screen and (max-width: $tabletMax) {
+            margin-bottom: 64px;
+        }
     }
 
     h3 {

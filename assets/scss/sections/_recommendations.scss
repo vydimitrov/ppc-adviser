@@ -1,3 +1,7 @@
 .recommendations {
-    
+    @media screen and (max-width: $tabletMax) {
+        .container-narrow {
+            padding: 0;
+        }
+    }
 }

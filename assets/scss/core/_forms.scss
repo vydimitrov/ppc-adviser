@@ -16,6 +16,9 @@ form {
     input[type="email"],
     input[type="text"] {
         width: 60%;
+        @media screen and (max-width: $tabletMax) {
+            width: 100%;
+        }
     }
 
     textarea {

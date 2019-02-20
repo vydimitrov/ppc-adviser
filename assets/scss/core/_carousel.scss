@@ -1,6 +1,5 @@
 .carousel {
     position: relative;
-    padding: 0 100px;
 
     ul {
         list-style-type: none;
@@ -25,22 +24,34 @@
 
     .carousel-arrow {
         position: absolute;
-        top: 36px;
         padding: 16px;
+        z-index: 2;
         cursor: pointer;
         img {
             width: 36px;
         }
+
+        @media screen and (min-width: $tabletMin) {
+            top: 36px;
+        }
+
+        @media screen and (max-width: $tabletMax) {
+            bottom: 0;
+        }
     }
 
     .arrow-left {
-        left: 0;
+        left: -60px;
         transform: rotate(90deg);
     }
 
     .arrow-right {
-        right: 0;
+        right: -60px;
         transform: rotate(-90deg);
+    }
+
+    .item-inner {
+        padding: 0 16px;
     }
     
 }
