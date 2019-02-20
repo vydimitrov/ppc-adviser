@@ -11,18 +11,35 @@
         display: flex;
         &.img-to-left {
             .service-image-wrapper {
-                margin-right: 48px;
+                @media screen and (min-width: $tabletMin) {
+                    margin-right: 48px;
+                }
             }
         }
 
         &.img-to-right {
             .service-image-wrapper {
-                margin-left: 48px;
+                @media screen and (min-width: $tabletMin) {
+                    margin-right: 48px;
+                }
+            }
+
+            @media screen and (max-width: $tabletMax) {
+                .service-description {
+                    order: 1;
+                }
             }
         }
 
         & + .service-details {
             margin-top: 80px;
+            @media screen and (max-width: $tabletMax) {
+                margin-top: 56px;
+            }
+        }
+
+        @media screen and (max-width: $tabletMax) {
+            flex-direction: column;
         }
     }
 
@@ -39,6 +56,10 @@
     .service-name {
         margin: 0 0 16px;
         white-space: nowrap;
+        @media screen and (max-width: $tabletMax) {
+            order: 1;
+            margin: 16px 0 24px;
+        }
     }
 
     .list-title {

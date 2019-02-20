@@ -10,4 +10,14 @@
         text-decoration: none;
         color: $grey-color;
     }
+
+    @media screen and (max-width: $tabletMax) {
+        .row {
+            & > div:last-child {
+                .sqaure-grid-item {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
 }

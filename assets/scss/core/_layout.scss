@@ -30,7 +30,7 @@ div[class^="col-"] {
     max-width:  50%;
 }
 
-@media screen and (min-width: $desktopMin) {
+@media screen and (min-width: $tabletMin) {
     .col-sm-4 {
         flex: 0 0 33.33333%;
         max-width: 33.33333%;
