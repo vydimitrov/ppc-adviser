@@ -11,6 +11,9 @@
         left: 0;
         width: 100%;
         z-index: 2;
+        @media screen and (max-width: $tabletMax) {
+            display: none;
+        }
     }
 
     .nav-content {
@@ -83,7 +86,7 @@
         }
 
         @media screen and (max-width: $tabletMax) {
-            height: 60vh;
+            height: 55vh;
         }
     }
 
