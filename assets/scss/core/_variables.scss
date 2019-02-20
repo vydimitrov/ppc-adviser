@@ -31,16 +31,27 @@ $border-radius: 4px;
     box-shadow: $box-shadow;
 }
 
+$img-size-big-desktop: 260px;
+$img-size-big-tablet: 200px;
+
 %image-circle-big {
-    width: 260px;
-    height: 260px;
+    width: $img-size-big-desktop;
+    height: $img-size-big-desktop;
+    flex: 0 0 $img-size-big-desktop;
     @extend %image-circle;
+
+    @media screen and (max-width: $tabletMax) {
+        width: $img-size-big-tablet;
+        height: $img-size-big-tablet;
+        flex: 0 0 $img-size-big-tablet;
+     }
 }
 
 %image-circle-small {
     width: 200px;
     height: 200px;
     @extend %image-circle;
+    flex: 0 0 200px;
 }
 
 %name {

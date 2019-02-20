@@ -20,6 +20,9 @@ section {
   h2 {
     margin: 0 0 36px;
     text-transform: uppercase;
+    @media screen and (max-width: $tabletMax) {
+      margin: 0 0 18px;
+    }
   }
 
   &.section-creamy {
