@@ -139,7 +139,12 @@ function handleFormSubmit() {
                 return;
             }
 
-            console.log('The form was submited');
+            var tahnkYouMessage = document.querySelector('.thank-you-message');
+            tahnkYouMessage.style.opacity = 1;
+
+            setTimeout(function() {
+                tahnkYouMessage.style.opacity = 0;
+            }, 5000);
         };
 
         request.onerror = function(error) {
@@ -148,6 +153,8 @@ function handleFormSubmit() {
 
         var form = document.querySelector('#js-contact-me-form');
         var formData = new FormData(form);
+
+        form.reset();
         
         request.open('POST', '/api/send-mail.php', true);
         request.send(formData);

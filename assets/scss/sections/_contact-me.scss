@@ -1,4 +1,9 @@
 .contact-me {
+    .thank-you-message {
+        padding-top: 32px;
+        font-size: 18px;
+        opacity: 0;
+    }
     @media screen and (max-width: $tabletMax) {
         .form-col {
             order: 1;
