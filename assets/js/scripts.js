@@ -126,10 +126,30 @@ function handleFormSubmit() {
         e.preventDefault();
 
         var request = new XMLHttpRequest();
-        request.open('POST', '/api/send-mail.php', /* async = */ false);
+        
+        request.onreadystatechange = function() {
+            if (request.readyState !== 4) {
+              return;
+            }
+            if (request.status === 0) {
+              return;
+            }
+            if (request.status !== 200) {
+                console.log('Error');
+                return;
+            }
+
+            console.log('The form was submited');
+        };
+
+        request.onerror = function(error) {
+            console.log(error)
+        };
+
         var form = document.querySelector('#js-contact-me-form');
         var formData = new FormData(form);
         
+        request.open('POST', '/api/send-mail.php', true);
         request.send(formData);
     });
 }
