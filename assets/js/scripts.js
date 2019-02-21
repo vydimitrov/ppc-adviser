@@ -144,7 +144,7 @@ function handleFormSubmit() {
 
             setTimeout(function() {
                 tahnkYouMessage.style.opacity = 0;
-            }, 5000);
+            }, 10000);
         };
 
         request.onerror = function(error) {
