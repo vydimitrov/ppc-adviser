@@ -11,13 +11,13 @@
         $subject = strip_tags(trim($_POST['subject']));
     }
 
-    if (isset( $_POST['details'])) {
-        $details = strip_tags(trim($_POST['details']));
+    if (isset( $_POST['message'])) {
+        $message = strip_tags(trim($_POST['message']));
     }
 
-    $recipient = 'boryana.dimitrova@outlook.com';
+    $recipient = "boryana.dimitrova@outlook.com";
     $mailheader = "From: $email \r\n";
-    $formcontent="Name: $name \nEmail: $email \nSubject: $subject \nMessage: $message";
+    $formcontent = "Name: $name \nEmail: $email \nSubject: $subject \nMessage: $message";
     $emailSubject = 'New contact form submition';
 
     mail($recipient, $emailSubject, $formcontent, $mailheader) or die("Error!");
