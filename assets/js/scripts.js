@@ -120,9 +120,24 @@ function handleScrollTo() {
     });
 }
 
+function handleFormSubmit() {
+    var form = document.querySelector('#js-contact-me-form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var request = new XMLHttpRequest();
+        request.open('POST', '/api/send-mail.php', /* async = */ false);
+        var form = document.querySelector('#js-contact-me-form');
+        var formData = new FormData(form);
+        
+        request.send(formData);
+    });
+}
+
 
 window.onload = function() {
     handleForm();
+    handleFormSubmit();
     handleCarousel();
     handleScrollTo();
 };
