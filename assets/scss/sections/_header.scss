@@ -169,6 +169,7 @@
 
     .profile-image {
         @extend %image-circle-big;
+        background: $white;
     }
 
     .profile-details {
