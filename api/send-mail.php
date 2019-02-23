@@ -16,13 +16,13 @@
     }
 
     $freeAudit = "no";
-    if (isset($_POST['free-audit']) and $_POST['free-audit'] == "on") {
+    if (isset($_POST['free-audit']) and $_POST['free-audit'] == "yes") {
         $freeAudit = "yes";
     }
 
     $recipient = "boryana.dimitrova@outlook.com";
     $mailheader = "From: $email \r\n";
-    $formcontent = "Name: $name \nEmail: $email \nSubject: $subject \nMessage: $message\n Free Audit: $freeAudit";
+    $formcontent = "Name: $name \nEmail: $email \nMessage: $message\n Free Audit: $freeAudit";
     $emailSubject = 'New contact form submition';
 
     mail($recipient, $emailSubject, $formcontent, $mailheader) or die("Error!");
