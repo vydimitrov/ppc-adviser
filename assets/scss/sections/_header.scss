@@ -185,8 +185,26 @@
         }
 
         .occupation {
-            font-size: 18px;
+            display: flex;
+            align-content: center;
             margin: 4px 0 0;
+            font-size: 18px;
+
+            svg {
+                display: block;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            .linkedin {
+                margin-left: 16px;
+            }
+
+            .mail {
+                margin-left: 4px;
+            }
         }
 
         .profile-info {

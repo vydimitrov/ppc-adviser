@@ -186,6 +186,12 @@ function loadImages() {
     });
 }
 
+function cookiePolicy() {
+    document.querySelector('.js-btn-coookie').addEventListener('click', function() {
+        document.querySelector('.cookie-policy').classList.add('hidden');
+    });
+}
+
 
 window.onload = function() {
     handleForm();
@@ -193,4 +199,5 @@ window.onload = function() {
     handleCarousel();
     handleScrollTo();
     loadImages();
+    cookiePolicy();
 };

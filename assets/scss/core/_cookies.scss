@@ -1,0 +1,47 @@
+$bg-color: rgba(0,0,0, .8);;
+
+.cookie-policy {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 240px;
+    height: 200px;
+    background: $bg-color;
+    color: $white;
+    z-index: 3; 
+
+    &.hidden {
+        display: none;
+    }
+
+    .inner {
+        text-align: center;
+        padding: 16px;
+        p {
+            margin: 0;
+        }
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 8px solid $bg-color;
+    }
+
+    .btn-coookie {
+        @extend %button-base;
+        padding: 8px 10px;
+        color: $white;
+        border: 1px solid $white;
+        background-color: transparent;
+        margin-top: 24px;
+    }
+}

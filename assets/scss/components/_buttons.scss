@@ -3,9 +3,8 @@
     border-radius: 4px;
     font-weight: normal;
     font-size: 13px;
-    padding: 10px 18px;
     text-decoration: none;
-    min-width: 120px;
+    min-width: 100px;
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
@@ -19,6 +18,7 @@
     color: $black;
     background-color: $main-color;
     border: 1px solid $main-color;
+    padding: 10px 18px;
     &:hover {
         background-color: lighten($main-color, 8%);
     }
