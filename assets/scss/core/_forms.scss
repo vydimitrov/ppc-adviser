@@ -2,9 +2,11 @@ $border: 1px solid $tint-1;
 $border-radius: 4px;
 
 form {
+    transition: opacity .2s;
     input[type="email"],
     input[type="text"],
     textarea {
+        display: block;
         padding: 14px 18px;
         border: $border;
         border-radius: $border-radius;
@@ -15,7 +17,7 @@ form {
 
     input[type="email"],
     input[type="text"] {
-        width: 60%;
+        width: 100%;
         @media screen and (max-width: $tabletMax) {
             width: 100%;
         }
@@ -23,37 +25,66 @@ form {
 
     textarea {
         width: 100%;
-        height: 300px;
+        height: 140px;
         resize: none;
     }
 
-    .checkbox {
-        position: relative;
-        margin: 16px 0;
+    label {
+        font-size: 16px;
+    }
 
-        label {
-            position: relative;
-            color: $tint-1;
-            cursor: pointer;
-            padding-left: 32px;
-            z-index: 1;
-            user-select: none;
-        }
-
-        input:checked + span::before {
-            content: "";
-            position: absolute;
-            left: 2px;
-            top: 2px;
-            right: 2px;
-            bottom: 2px;
-            background: url(../../../assets/images/check.svg);
-            background-size: cover;
-            background-position: center;
+    .radio-wrapper {
+        align-items: center;
+        @media screen and (max-width: $tabletMax) {
+            display: flex;
+            & > label {
+                flex: 1 1 auto;
+            }
         }
     }
 
-    .checkbox-custom {
+    .radio-container {
+        display: flex;
+    }
+
+    .radio-btn {
+        position: relative;
+
+        & + .radio-btn {
+            margin-left: 40px;
+        }
+
+        @media screen and (max-width: $tabletMax) {
+            & + .radio-btn {
+                margin-left: 16px;
+            }
+        }
+
+        label {
+            position: relative;
+            padding-left: 30px;
+            z-index: 1;
+        }
+
+        span::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 10px;
+            height: 10px;
+            background: $tint-1;
+            border-radius: 50%;
+            transition: transform .2s;
+        }
+
+        input:checked + span::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    .radio-custom {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -64,7 +95,7 @@ form {
         width: 20px;
         height: 20px;
         border: $border;
-        border-radius: $border-radius;
+        border-radius: 50%;
         margin-right: 8px;
     }
 
@@ -75,30 +106,31 @@ form {
             margin-top: 24px;
         }
 
-        label {
-            position: absolute;
-            background: $white;
-            top: 16px;
-            left: 10px;
-            font-size: 16px;
-            padding: 0 8px;
+        &:not(.radio-wrapper) > label {
             transition: all .2s;
-            color: $tint-1;
-
-            &::before {
-                content: '';
-                display: block;
+            @media screen and (max-width: $tabletMax) {
                 position: absolute;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                top: 50%;
                 background: $white;
-            }
+                top: 16px;
+                left: 10px;
+                padding: 0 8px;
+                color: $tint-1;
 
-            span {
-                position: relative;
-                z-index: 2;
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    top: 50%;
+                    background: $white;
+                }
+    
+                span {
+                    position: relative;
+                    z-index: 2;
+                }
             }
         }
 
@@ -108,34 +140,158 @@ form {
                 border-color: $main-color;
                 & + label {
                     color: $main-color;
-                    background: $main-color-light;
-                    &::before {
-                        content: '';
-                        display: block;
-                        position: absolute;
-                        left: 0;
-                        bottom: 0;
-                        width: 100%;
-                        top: 50%;
-                        background: $white;
-                    }
                 }
             }
 
-            &.input-field + label,
-            &:focus + label {
-                font-size: 13px;
-                transform: translateY(-22px);
-                transition: all .2s;
-            }
-
-            &.input-field + label {
-                background: $main-color-light;
+            @media screen and (max-width: $tabletMax) {
+                &.input-field + label,
+                &:focus + label {
+                    font-size: 13px;
+                    transform: translateY(-22px);
+                    transition: all .2s;
+                }
             }
         }
+
+        @media screen and (min-width: $tabletMin) {
+            display: flex;
+            & > label {
+                order: -1;
+                flex: 1 1 32%;
+                line-height: 48px;
+            }
+ 
+            .radio-container,
+            & > input,
+            & > textarea {
+                flex: 68%;
+            }
+
+            & + .input-wrapper {
+                margin-top: 16px;
+                &.radio-wrapper {
+                    margin-top: 8px;
+                }
+            }
+         }
     }
 
-    input[type="submit"] {
-        margin-top: 24px;
+    &.fade-out {
+        opacity: 0;
     }
+
+    .submit-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        margin: 40px auto 0;
+
+        &.btn-primary {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        &.disabled {
+            .send-icon {
+                svg {
+                    fill: $white;
+                }
+            }
+        }
+
+        .submit-icon {
+            display: flex;
+            align-items: center;
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .spinner-container {
+            display: none;
+        }
+
+        &.is-loading {
+            .spinner-container {
+                display: flex;
+            }
+
+            .send-icon {
+                display: none;
+            }
+        }
+
+        .spinner-container {
+            width: 20px;
+            justify-content: center;
+        }
+
+        .spinner,
+        .spinner:before,
+        .spinner:after {
+            border-radius: 50%;
+            background-color: #000;
+            width: 5px;
+            height: 5px;
+            transform-origin: center center;
+            display: inline-block;
+        }
+        .spinner {
+            position: relative;
+            background-color: rgba(#000,1);
+            opacity: 1;
+            -webkit-animation: spScaleAlpha 1s infinite linear;
+            animation: spScaleAlpha 1s infinite linear;
+        }
+        .spinner:before, .spinner:after {
+            content: '';
+            position: relative;
+            opacity: 0.25;
+        }
+        .spinner:before {
+            left: 7px;
+            top: -6px;
+            -webkit-animation: spScaleAlphaBefore 1s infinite linear;
+            animation: spScaleAlphaBefore 1s infinite linear;
+        }
+        .spinner:after {
+            left: -13px;
+            top: -6px;
+            -webkit-animation: spScaleAlphaAfter 1s infinite linear;
+            animation: spScaleAlphaAfter 1s infinite linear;
+        }
+    }
+      @-webkit-keyframes spScaleAlpha {
+        0% { opacity: 1; }
+        33% { opacity: 0.25; }
+        66% { opacity: 0.25; }
+        100% { opacity: 1; }
+      }
+      @keyframes spScaleAlpha {
+        0% { opacity: 1; }
+        33% {  opacity: 0.25; }
+        66% { opacity: 0.25; }
+        100% {  opacity: 1; }
+      }
+      @-webkit-keyframes spScaleAlphaBefore {
+        0% { opacity: 0.25; }
+        33% { opacity: 1; }
+        66% { opacity: 0.25; }
+      }
+      @keyframes spScaleAlphaBefore {
+        0% { opacity: 0.25; }
+        33% { opacity: 1; }
+        66% { opacity: 0.25; }
+      }
+      @-webkit-keyframes spScaleAlphaAfter {
+        33% { opacity: 0.25; }
+        66% { opacity: 1; }
+        100% { opacity: 0.25; }
+      }
+      @keyframes spScaleAlphaAfter {
+        33% { opacity: 0.25; }
+        66% { opacity: 1; }
+        100% { opacity: 0.25; }
+      }
 }

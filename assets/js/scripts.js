@@ -3,27 +3,27 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+var isFormValide = function(inputs) {
+    var valideInputs = 0;
+    inputs.forEach(function(input) {
+        if (input.type === 'email') {
+            var isValide = validateEmail(input.value);
+            if (!isValide) {
+                return false;
+            }
+        } else if (input.value === '') {
+            return false;
+        }
+
+        valideInputs += 1;
+    });
+
+    return valideInputs === inputs.length;
+};
+
 function handleForm() {
     var inputs = document.querySelectorAll('.js-input');
     var submitButton = document.querySelector('#js-submit-button');
-
-    var isFormValide = function() {
-        var valideInputs = 0;
-        inputs.forEach(function(input) {
-            if (input.type === 'email') {
-                var isValide = validateEmail(input.value);
-                if (!isValide) {
-                    return false;
-                }
-            } else if (input.value === '') {
-                return false;
-            }
-
-            valideInputs += 1;
-        });
-
-        return valideInputs === inputs.length;
-    };
 
     inputs.forEach(function(input) {
         input.oninput = function() {
@@ -34,7 +34,7 @@ function handleForm() {
                 input.classList.remove('input-field');
             }
 
-            var isValideForm = isFormValide();
+            var isValideForm = isFormValide(inputs);
             if (isValideForm) {
                 submitButton.classList.remove('disabled');
             } else {
@@ -122,8 +122,24 @@ function handleScrollTo() {
 
 function handleFormSubmit() {
     var form = document.querySelector('#js-contact-me-form');
-    form.addEventListener('submit', function(e) {
+    var submitButton = document.querySelector('#js-submit-button');
+    var sendText = document.querySelector('.js-send-text');
+    var formContainer = document.querySelector('.form-container');
+    var inputs = document.querySelectorAll('.js-input');
+    var isLaoding = false;
+
+    var submitForm = function(e) {
         e.preventDefault();
+
+        var isValideForm = isFormValide(inputs);
+        if (isLaoding || !isValideForm) {
+            return;
+        }
+
+        isLaoding = true;
+        var submitButton = document.querySelector('#js-submit-button');
+        submitButton.classList.add('is-loading');
+        sendText.innerHTML = 'sending';
 
         var request = new XMLHttpRequest();
         
@@ -139,26 +155,21 @@ function handleFormSubmit() {
                 return;
             }
 
-            var tahnkYouMessage = document.querySelector('.thank-you-message');
-            tahnkYouMessage.style.opacity = 1;
-
-            setTimeout(function() {
-                tahnkYouMessage.style.opacity = 0;
-            }, 10000);
+            formContainer.classList.add('form-submitted');
         };
 
         request.onerror = function(error) {
             console.log(error)
         };
 
-        var form = document.querySelector('#js-contact-me-form');
         var formData = new FormData(form);
-
-        form.reset();
         
         request.open('POST', '/api/send-mail.php', true);
         request.send(formData);
-    });
+    };
+
+    submitButton.addEventListener('click', submitForm);
+    form.addEventListener('submit', submitForm);
 }
 
 
