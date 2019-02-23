@@ -172,10 +172,25 @@ function handleFormSubmit() {
     form.addEventListener('submit', submitForm);
 }
 
+function loadImages() {
+    var attr = 'data-src';
+    document.querySelectorAll('img').forEach(function(img) {
+        var dataSrc = img.getAttribute(attr);
+        
+        if (!dataSrc) {
+            return;
+        }
+
+        img.setAttribute('src', dataSrc);
+        img.removeAttribute(attr);
+    });
+}
+
 
 window.onload = function() {
     handleForm();
     handleFormSubmit();
     handleCarousel();
     handleScrollTo();
+    loadImages();
 };
