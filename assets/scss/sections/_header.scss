@@ -198,12 +198,22 @@
                 margin: 0;
             }
 
-            .linkedin {
-                margin-left: 16px;
+            @media screen and (max-width: $tabletMax) {
+                flex-direction: column;
             }
+        }
+
+        .find-me-on {
+            display: flex;
+            justify-content: center;
+            margin: 0;
 
             .mail {
                 margin-left: 4px;
+            }
+
+            @media screen and (min-width: $tabletMin) {
+                margin-left: 16px;
             }
         }
 
