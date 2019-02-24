@@ -192,6 +192,41 @@ function cookiePolicy() {
     });
 }
 
+function stickyHeader() {
+    var header =  document.querySelector('.js-sticky-header');
+    var headerTrigger =  document.querySelector('.js-sticky-header-trigger');
+
+
+    if ('matchMedia' in window && window.matchMedia('(max-width: 767px)').matches) {
+        return;
+    }
+
+    new Waypoint({
+        element: headerTrigger,
+        handler: function(direction) {
+            if (direction === 'down') {
+                header.classList.add('visible');
+            } else {
+                header.classList.remove('visible');
+            }
+        }
+    });
+
+    new Waypoint({
+        element: header,
+        handler: function(direction) {
+            if (direction === 'down') {
+                header.classList.add('fixed');
+            } else {
+                header.classList.remove('fixed');
+            }
+        },
+        offset: function () {
+            return -(this.adapter.outerHeight() + 100);
+        }
+    });
+}
+
 
 window.onload = function() {
     handleForm();
@@ -200,4 +235,5 @@ window.onload = function() {
     handleScrollTo();
     loadImages();
     cookiePolicy();
+    stickyHeader();
 };
