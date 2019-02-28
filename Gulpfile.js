@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
+var critical = require('critical').stream;
 
 var input = './assets/scss/*.scss';
 var output = './assets/css';
@@ -53,10 +54,28 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['serve']);
 
-gulp.task('prod', function () {
+gulp.task('critical', function() {
+  return gulp
+    .src('*.html')
+    .pipe(critical({
+      base: '/',
+      inline: true,
+      minify: true,
+      extract: true,
+      css: ['assets/css/app.css']
+    }))
+    .on('error', function(err) {
+      log.error(err.message);
+    })
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('scss-prod', function () {
   return gulp
     .src(input)
     .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest(output));
 });
+
+gulp.task('prod', ['scss-prod', 'critical']);
