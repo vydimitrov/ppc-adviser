@@ -27,8 +27,9 @@ $bg-color: rgba(0,0,0, .8);;
 
     @media screen and (min-width: $tabletMin) {
         right: 16px;
-        top: 45vh;
+        top: 50vh;
         width: 240px;
+        margin-top: -94px;
 
         &::before {
             content: "";
@@ -36,7 +37,7 @@ $bg-color: rgba(0,0,0, .8);;
             width: 0;
             height: 0;
             position: absolute;
-            right: -18px;
+            right: -8px;
             left: auto;
             top: 50%;
             transform: translateY(-50%);
@@ -50,7 +51,7 @@ $bg-color: rgba(0,0,0, .8);;
         }
 
         .btn-coookie-wrapper {
-            margin-top: 24px;
+            margin-top: 25px;
         }
     }
 
